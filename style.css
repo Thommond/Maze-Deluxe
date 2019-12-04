@@ -1,5 +1,26 @@
-html,
+html {
+ box-sizing: border-box;
+}
+
+*,*::before,*::after {
+  box-sizing: inherit;
+}
+
 body {
-    height: auto;
-    width: auto;
+    height: 1000px;
+    width: 1000px;
+}
+
+canvas {
+  border: 1px solid orange;
+}
+
+#mover {
+  position:relative;
+  width: 15px;
+  height: 15px;
+  display: block;
+  background-color: black;
+
+
 }
