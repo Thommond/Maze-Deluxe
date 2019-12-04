@@ -1,6 +1,4 @@
-
-
-
+//creating the table for level one
 let createTable = () => {
   //get the body
 let body = document.getElementsByTagName('body')[0];
@@ -77,4 +75,4 @@ else if (event.key == "d") {
   console.log(mover.style.left)
 console.log("test4");
 } });
-*/åå
+*/

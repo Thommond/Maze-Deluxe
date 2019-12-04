@@ -1,17 +1,26 @@
- html {
-   box-sizing: border-box;
- }
+tml {
+ box-sizing: border-box;
+}
 
- *,*::before,*::after {
-   box-sizing: inherit;
- }
-
+*,*::before,*::after {
+  box-sizing: inherit;
+}
 
 body {
-  width:
+    height: 1000px;
+    width: 1000px;
 }
-div.mover {
-  width:2px;
-  height: 2px;
+
+canvas {
+  border: 1px solid orange;
+}
+
+#mover {
   position:relative;
+  width: 15px;
+  height: 15px;
+  display: block;
+  background-color: black;
+
+
 }
