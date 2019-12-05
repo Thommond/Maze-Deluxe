@@ -1,40 +1,100 @@
-//creating the table for level one
-let createTable = () => {
-  //get the body
-let body = document.getElementsByTagName('body')[0];
-//creats a table element and a tbody element
-let table = document.createElement('table');
-let tbody = document.createElement('tbody');
-
-
-//creating all the cells
-  for(let count = 0; count < 22; count++) {
-    //creates table row
-  let row =  document.createElement("tr");
-
-    for(let count2 = 0; count2 < 22; count2++) {
-      //Creates a td element and a text node, make the
-      //node the contents of the td and put the td at
-      //the end of the table row
-      let cell = document.createElement('td');
-      let cellText = document.createTextNode('a');
-    cell.appendChild(cellText);
-    row.appendChild(cell);
-    }
-    //adding the row to the end of the table body
-   tbody.appendChild(row);
-  }
-  //adding the table body to the table
-table.appendChild(tbody);
-//adding the table to the body
-body.appendChild(table);
-//sets the border attribute of table to 2
-table.setAttribute("border","1");
-table.setAttribute("width","800");
-table.setAttribute("height","800");
+//level one maze
+let maze1 = [
+  `#########################################`, //index 1
+  `!.......................#...............#`,
+  `#...#################...#...#########...#`,
+  `#...#.......#.......#...#...#...........#`,
+  `#...#...#...#...#...#...#...#...#####...#`,
+  `#...#...#.......#.......#...#...#...#...#`,
+  `#...#########...#############...#...#...#`,
+  `#...........#...............#...#...#...#`,
+  `#########################...#...#...#...#`,
+  `#.......................#...#...#.......#`,
+  `#...#################...#...#...#########`,
+  `#...#...............#...#...#...........#`,
+  `#...#############...#...#...#####...#...#`,
+  `#.......#.......#.......#.......#...#...#`,
+  `#...#...#...#...#...#########...#####...#`,
+  `#...#.......#...#...........#.......#...#`,
+  `#############...#################...#...#`,
+  `#...............#.......#.......#.......#`,
+  `#...#############...#...#...#...#####...#`,
+  `#...................#.......#...........#`,
+  `#######################################_#`
+];
+//values of different char
+let levelValues = {
+  '.': 'empty',
+  '#': 'wall',
+  '_': 'startPosition',
+  '!': 'finishPosition'
 };
-//calling the function
-createTable();
+//the clearElement function clears all elements from its argument
+const clearElement = (element) => {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+};
+
+const drawMaze = (maze) => {
+  //creating a function
+  let tableEl = document.querySelector('table');
+  //setting table El to the element table
+  clearElement(tableEl);
+  //clearing if any elements are children of the tableEl
+
+//loop which
+  for (let i = 0; i < maze.length; i++) {
+
+    let rowEl = document.createElement('tr');
+
+    tableEl.appendChild(rowEl);
+
+    rowEl.style.border = '1px solid black'
+//loop which
+    for (let x = 0; x < maze[i].length; x++) {
+
+      let tdEl = document.createElement('td');
+
+      tdEl.innerHTML = maze[i].charAt(x);
+//conditionals below if/else if the char is a specific character
+//then run the code below
+      if (maze[i].charAt(x) == "#") {
+        rowEl.appendChild(tdEl);
+         tdEl.style.backgroundColor = 'red';
+
+      } else if (maze[i].charAt(x) == ".") {
+        rowEl.appendChild(tdEl);
+        tdEl.style.backgroundColor = "blue";
+
+      } else if (maze[i].charAt(x) == "_") {
+        rowEl.appendChild(tdEl);
+        tdEl.style.backgroundColor = "green";
+
+      } else if (maze[i].charAt(x) == "!") {
+        rowEl.appendChild(tdEl);
+        tdEl.style.backgroundColor = 'yellow';
+      }
+
+    }
+
+  };
+
+};
+//Calling the function drawMaze print the maze and table on the page
+drawMaze(maze1);
+
+
+
+
+/*const cells = document.getElementsByTagName('td');
+console.log(cells)
+console.log(cells[0]);
+console.log(cells[1]);*/
+
+
+
+//The code for the mover is below
 /*
 //selecting the p element with the Id of mover
 let mover = document.getElementById("mover");
@@ -76,42 +136,7 @@ else if (event.key == "d") {
   console.log(mover.style.left)
 console.log("test4");
 } });
-*/
+
 
 }
-
-
-
-
-
-
-/*
-let empty = '.';
-let wall = '#';
-let startLine = '_';
-let finishLine = '!';
-let cellSize = 40;
-let level1 = [
-'#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#',
-'!''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''#',
-'#''.''.''.''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''.''.''.''#''.''.''.''#''#''#''#''#''#''#''#''#''.''.''.''#',
-'#''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''.''.''.''.''.''.''.''.''#',
-'#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''#''#''#''#''.''.''.''#',
-'#''.''.''.''#''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#',
-'#''.''.''.''#''#''#''#''#''#''#''#''#''.''.''.''#''#''#''#''#''#''#''#''#''#''#''#''#''.''.''.''#''.''.''.''#''.''.''.''#',
-'#''.''.''.''.''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#',
-'#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#',
-'#''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''.''.''.''.''#',
-'#''.''.''.''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''.''.''.''#''.''.''.''#''.''.''.''#''#''#''#''#''#''#''#''#',
-'#''.''.''.''#''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''.''.''.''.''.''.''.''.''#',
-'#''.''.''.''#''#''#''#''#''#''#''#''#''#''#''#''#''.''.''.''#''.''.''.''#''.''.''.''#''#''#''#''#''.''.''.''#''.''.''.''#',
-'#''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''#''.''.''.''#',
-'#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''#''#''#''#''#''#''#''#''.''.''.''#''#''#''#''#''.''.''.''#',
-'#''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''#''.''.''.''.''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''#',
-'#''#''#''#''#''#''#''#''#''#''#''#''#''.''.''.''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''.''.''.''#''.''.''.''#',
-'#''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#',
-'#''.''.''.''#''#''#''#''#''#''#''#''#''#''#''#''#''.''.''.''#''.''.''.''#''.''.''.''#''.''.''.''#''#''#''#''#''.''.''.''#',
-'#''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''#''.''.''.''.''.''.''.''.''.''.''.''#',
-'#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''#''_''#'
-];
 */

@@ -1,4 +1,4 @@
-tml {
+html {
  box-sizing: border-box;
 }
 
@@ -11,14 +11,25 @@ body {
     width: 1000px;
 }
 
-canvas {
-  border: 1px solid orange;
-}
 
 #mover {
-  position:relative;
+  position:absolute;
   width: 15px;
   height: 15px;
   display: block;
   background-color: black;
+}
+
+table{
+  border: 1px solid black;
+  width:1000px;
+  height: 1000px;
+}
+tr {
+  border: 1px solid black;
+}
+
+td {
+
+  border: 1px solid black;
 }
