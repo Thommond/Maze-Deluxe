@@ -7,29 +7,21 @@ html {
 }
 
 body {
-    height: 1000px;
-    width: 1000px;
+    height: auto;
+    width: auto;
+    margin: auto;
 }
 
 
-#mover {
-  position:absolute;
-  width: 15px;
-  height: 15px;
-  display: block;
-  background-color: black;
-}
 
-table{
-  border: 1px solid black;
-  width:1000px;
-  height: 1000px;
-}
-tr {
-  border: 1px solid black;
+
+table {
+  width:1050px;
+  height: 1050px;
+  border-spacing: 0px;
+  border-collapse: initial;
 }
 
 td {
-
-  border: 1px solid black;
+  margin: 0;
 }
