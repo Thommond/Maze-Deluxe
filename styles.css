@@ -13,13 +13,14 @@ body {
 }
 
 
-
+div#cover {
+  position: none;
+}
 
 table {
-  width:1050px;
-  height: 1050px;
   border-spacing: 0px;
   border-collapse: initial;
+  position: absolute;
 }
 
 td {
