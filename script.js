@@ -1,34 +1,38 @@
 //level one maze
 let maze1 = [
-  `#########################################`, //index 1
-  `!.......................#...............#`,
-  `#...#################...#...#########...#`,
-  `#...#.......#.......#...#...#...........#`,
-  `#...#...#...#...#...#...#...#...#####...#`,
-  `#...#...#.......#.......#...#...#...#...#`,
-  `#...#########...#############...#...#...#`,
-  `#...........#...............#...#...#...#`,
-  `#########################...#...#...#...#`,
-  `#.......................#...#...#.......#`,
-  `#...#################...#...#...#########`,
-  `#...#...............#...#...#...........#`,
-  `#...#############...#...#...#####...#...#`,
-  `#.......#.......#.......#.......#...#...#`,
-  `#...#...#...#...#...#########...#####...#`,
-  `#...#.......#...#...........#.......#...#`,
-  `#############...#################...#...#`,
-  `#...............#.......#.......#.......#`,
-  `#...#############...#...#...#...#####...#`,
-  `#...................#.......#.........._#`,
-  `#########################################`
+    `#########################################`, //index 1
+    `!.......................#...............#`,
+    `#...#################...#...#########...#`,
+    `#...#.......#.......#...#...#...........#`,
+    `#...#...#...#...#...#...#...#...#####...#`,
+    `#...#...#.......#.......#...#...#...#...#`,
+    `#...#########...#############...#...#...#`,
+    `#...........#...............#...#...#...#`,
+    `#########################...#...#...#...#`,
+    `#.......................#...#...#.......#`,
+    `#...#################...#...#...#########`,
+    `#...#...............#...#...#...........#`,
+    `#...#############...#...#...#####...#...#`,
+    `#.......#.......#.......#.......#...#...#`,
+    `#...#...#...#...#...#########...#####...#`,
+    `#...#.......#...#...........#.......#...#`,
+    `#############...#################...#...#`,
+    `#...............#.......#.......#.......#`,
+    `#...#############...#...#...#...#####...#`,
+    `#...................#.......#.........._#`,
+    `#########################################`
+
+
 ];
 //values of different char
 let levelValues = {
-  '.': 'empty',
-  '#': 'wall',
-  '_': 'startPosition',
-  '!': 'finishPosition'
+    '.': 'empty',
+    '#': 'wall',
+    '_': 'startPosition',
+    '!': 'finishPosition'
 };
+
+
 //the clearElement function clears all elements from its argument
 const clearTable = (tableEl) => {
   while (tableEl.firstChild) {
@@ -48,7 +52,7 @@ const drawMaze = (maze) => {
   divTable.style.width = '1050px';
   divTable.style.height = '1050px';
   divTable.style.position = 'absolute';
-  mover.style.left = '995px';
+  mover.style.left = '985px';
   mover.style.top = '970px';
   mover.style.backgroundColor = 'black';
   mover.style.width = '15px';
@@ -65,7 +69,7 @@ const drawMaze = (maze) => {
   //loop which
   for (let i = 0; i < maze.length; i++) {
 
-    let rowEl = document.createElement('tr');
+        let rowEl = document.createElement('tr');
 
     tableEl.appendChild(rowEl);
     rowEl.style.border = 'none';
@@ -148,18 +152,58 @@ let mover = document.getElementById('player');
   }
 
 
-
+});
 
   //make a check function
   let mazeCheck = () => {
    if(tdEl.textContent == '#' && parseInt(mover.style.top) == parseInt(tdEl) || parseInt(mover.style.top) == tdEl  ) {
-     removeEventListner()
+     removeEventListner(event)
    }
+}
 
-mazeCheck();
+
     //if # is in the position of the div
     //then cancel animation and make a p element which is created to the window
     //that states you loose
     //also disable the keys
-  }
-});
+
+
+/*
+function createTimer(seconds) {
+    intervalVar = setInterval(function() {
+        makeWhite(mazeWidth, 0, table.width - mazeWidth, table.height);
+        if (seconds === 0) {
+            clearInterval(intervalVar);
+            window.removeEventListener("keydown", moveplayer, true);
+            makeWhite(0, 0, table.width, table.height);
+            context.font = "40px Arial";
+            context.fillStyle = "red";
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.fillText("Time's up!", canvas.width / 2, canvas.height / 2);
+            return;
+        }
+        context.font = "20px Arial";
+        if (seconds <= 20 && seconds > 10) {
+            context.fillStyle = "yellow";
+        } else if (seconds <= 10) {
+            context.fillStyle = "red";
+        } else {
+            context.fillStyle = "green";
+        }
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        var minutes = Math.floor(seconds / 60);
+        var secondsToShow = (seconds - minutes * 60).toString();
+        if (secondsToShow.length === 1) {
+            secondsToShow = "0" + secondsToShow; // if the number of seconds is '5' for example, make sure that it is shown as '05'
+        }
+        context.fillText(
+            minutes.toString() + ":" + secondsToShow,
+            mazeWidth + 30,
+            table.height / 2
+        );
+        seconds--;
+    }, 1000);
+}
+*/

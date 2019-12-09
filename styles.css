@@ -1,15 +1,29 @@
-html {
- box-sizing: border-box;
-}
-
-*,*::before,*::after {
-  box-sizing: inherit;
-}
-
 body {
-    height: auto;
     width: auto;
-    margin: auto;
+    height: auto;
+    color: #ffffff00;
+    background: purple;
+    /*background-image: url(src/maze-background.jpeg);*/
+}
+
+/*h1 {
+    font: Impact;
+    text-decoration: underline;
+    text-decoration-color: gold;
+    text-align: center;
+    color: gold;
+    font-size: 80px;
+    -moz-text-decoration-color: gold;
+}*/
+
+
+table {
+    border: 10px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: auto;
+    height: auto;
 }
 
 
@@ -21,8 +35,15 @@ table {
   border-spacing: 0px;
   border-collapse: initial;
   position: absolute;
+
 }
 
-td {
-  margin: 0;
+
+
+#mover {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    display: block;
+    background-color: black;
 }
