@@ -3,6 +3,7 @@ body {
     height: auto;
     color: #ffffff00;
     background: purple;
+    display:flex;
     /*background-image: url(src/maze-background.jpeg);*/
 }
 
@@ -18,7 +19,7 @@ body {
 
 
 table {
-    
+
     margin-left: auto;
     margin-right: auto;
     text-align: center;

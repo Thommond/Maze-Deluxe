@@ -1,91 +1,116 @@
 //just put all levels in an array then go by the outer
 //array's index for the drawMaze function
-let maze1 = [//level one maze
-    `########################################`, //index 1
-    `_......................#...............#`,
-    `#..#################...#...#########...#`,
-    `#..#.......#.......#...#...#...........#`,
-    `#..#...#...#...#...#...#...#...#####...#`,
-    `#..#...#.......#.......#...#...#...#...#`,
-    `#..#########...#############...#...#...#`,
-    `#..........#...............#...#...#...#`,
-    `########################...#...#...#...#`,
-    `#......................#...#...#.......#`,
-    `#..#################...#...#...#########`,
-    `#..#...............#...#...#...........#`,
-    `#..#############...#...#...#####...#...#`,
-    `#......#.......#.......#.......#...#...#`,
-    `#..#...#...#...#...#########...#####...#`,
-    `#..#.......#...#...........#.......#...#`,
-    `############...#################...#...#`,
-    `#..............#.......#.......#.......#`,
-    `#..#############...#...#...#...#####...#`,
-    `#..................#.......#..........!#`,
-    `########################################`
+let maze = [
 
+  `########################################`, //index 1
+  `_......................#...............#`,
+  `#..#################...#...#########...#`,
+  `#..#.......#.......#...#...#...........#`,
+  `#..#...#...#...#...#...#...#...#####...#`,
+  `#..#...#.......#.......#...#...#...#...#`,
+  `#..#########...#############...#...#...#`,
+  `#..........#...............#...#...#...#`,
+  `########################...#...#...#...#`,
+  `#......................#...#...#.......#`,
+  `#..#################...#...#...#########`,
+  `#..#...............#...#...#...........#`,
+  `#..#############...#...#...#####...#...#`,
+  `#......#.......#.......#.......#...#...#`,
+  `#..#...#...#...#...#########...#####...#`,
+  `#..#.......#...#...........#.......#...#`,
+  `############...#################...#...#`,
+  `#..............#.......#.......#.......#`,
+  `#..#############...#...#...#...#####...#`,
+  `#..................#.......#..........!#`,
+  `########################################`
 
 ];
 
-let compare = (wowWalls,pos) => {
+let compare = (wowWalls, pos) => {
 
+}; //end of compare function
 
-
-
-  if (wallX[i] == pos.x && wallY[j] == pos.y) {
-     console.log(dead);
-  }
-
-  else {
-     //nothing is needed
-  }
-
-
-};//end of compare function
-
-let gameEnd = () => {
-
-};//end of endGame function
-
-let mazeCheck = (pos) => {
-
-};//end of mazeCheck function
-
-//values of different char
-let levelValues = {
-    '.': 'empty',
-    '#': 'wall',
-    '_': 'startPosition',
-    '!': 'finishPosition'
-};
-
-//array.push(domrect.x);
-
-//the clearElement function clears all elements from its argument
 const clearTable = (tableEl) => {
   while (tableEl.firstChild) {
     tableEl.removeChild(tableEl.firstChild);
-  }//end of clearTable funcition
+  } //end of clearTable funcition
 };
+
+let loose = () => {
+  //needed variables for end condition
+  let table = document.querySelector('table');
+  let looseP = document.createElement('section');
+  let body = document.querySelector('body');
+  let para = document.createElement('p');
+  let h1 = document.createElement('h1');
+  let button = document.createElement('button');
+  clearTable(table);
+  //styles for end condition
+  mover.style.display = 'none';
+  looseP.style.width = '500px';
+  looseP.style.height = '500px';
+  looseP.style.border = '1px solid black';
+  looseP.style.borderRadius = '10px';
+  looseP.style.backgroundColor = 'grey';
+  looseP.style.zIndex = '10000';
+  looseP.style.display = 'flex';
+  looseP.style.flexDirection = 'column';
+  looseP.style.justifyContent = 'center';
+  looseP.style.alignItems = 'center';
+  h1.textContent = 'GAME OVER';
+  h1.fontFamily = 'sans-serif';
+  h1.fontWeight = 'bold';
+  h1.style.color = 'black';
+  h1.style.height = '100px';
+  h1.style.fontSize = '40pt';
+  para.textContent = 'Press the Button below to restart.';
+  para.fontFamily = 'sans-serif';
+  para.style.color = 'black';
+  para.style.fontSize = '15pt';
+  para.style.height = '50px';
+  button.style.border = '1px solid purple';
+  button.style.fontSize = '50pt';
+  button.style.color = 'purple';
+  button.style.backgroundColor = 'red';
+  button.textContent = 'Restart??';
+  button.style.fontFamily = 'sans-serif';
+  button.style.width = '300px';
+  button.style.height = '100px';
+  button.setAttribute('onclick', 'window.location.reload();');
+  button.setAttribute('type', 'button');
+  //adding end para to body and other child elements
+  body.appendChild(looseP);
+  looseP.appendChild(h1);
+  looseP.appendChild(para);
+  looseP.appendChild(button);
+
+  body.style.justifyContent = 'center';
+}; //end of endGame function
+
+
+//values of different char
+
+
+//the clearElement function clears all elements from its argument
+
 
 const drawMaze = (maze) => {
   //creating a function to draw maze
-
   //defining basic layout
   let mover = document.createElement('div');
   let divTable = document.getElementById('cover');
   let tableEl = document.querySelector('table');
-    clearTable(tableEl);
-   divTable.appendChild(mover);
+  clearTable(tableEl);
+  divTable.appendChild(mover);
   //styling the mover
-  mover.style.left = '20px';
-  mover.style.top = '60px';
+  mover.style.left = '10px';
+  mover.style.top = '50px';
   mover.style.backgroundColor = 'black';
   mover.style.width = '20px';
   mover.style.height = '20px';
   mover.style.position = 'absolute';
   mover.setAttribute('id', 'player');
-  let node = document.createTextNode('@');
-  mover.appendChild(node);
+  mover.textContent = '@';
   mover.style.color = 'yellow';
   mover.style.zIndex = '10000';
 
@@ -97,21 +122,21 @@ const drawMaze = (maze) => {
   //clearing if any elements are children of the tableEl
 
   //loop which
-  for (let i = 0; i < maze.length; i++) {//loop for tr's
+  for (let i = 0; i < maze.length; i++) { //loop for tr's
 
-        let rowEl = document.createElement('tr');
+    let rowEl = document.createElement('tr');
 
     tableEl.appendChild(rowEl);
     rowEl.style.border = 'none';
 
-    for (let x = 0; x < maze[i].length; x++) {//loop for td's
+    for (let x = 0; x < maze[i].length; x++) { //loop for td's
       let tdEl = document.createElement('td');
-          rowEl.appendChild(tdEl)
-       tdEl.style.width = '25px';
-       tdEl.style.height = '35px';
-       tdEl.style.padding = '0px';
-       tdEl.style.margin = '0px';
-       tdEl.style.border = '0px';
+      rowEl.appendChild(tdEl)
+      tdEl.style.width = '25px';
+      tdEl.style.height = '35px';
+      tdEl.style.padding = '0px';
+      tdEl.style.margin = '0px';
+      tdEl.style.border = '0px';
       tdEl.innerHTML = maze[i].charAt(x);
 
       //conditionals below if/else if the char is a specific character
@@ -123,11 +148,6 @@ const drawMaze = (maze) => {
         tdEl.style.color = 'red';
         tdEl.style.border = 'none';
         tdEl.setAttribute('class', 'wall');
-        let wall = tdEl.getBoundingClientRect();
-
-      //  if (joe.y == posY || joe.x == posX ) {
-        //  console.log('no');
-      //  }
       } //end of text content if
       else if (maze[i].charAt(x) == ".") {
         tdEl.style.backgroundColor = "blue";
@@ -135,21 +155,21 @@ const drawMaze = (maze) => {
         tdEl.style.border = 'none';
         tdEl.setAttribute('class', 'freespace');
 
-      }//end of text content else if 1
-       else if (maze[i].charAt(x) == "_") {
+      } //end of text content else if 1
+      else if (maze[i].charAt(x) == "_") {
         tdEl.style.backgroundColor = "green";
         tdEl.style.color = 'green';
         tdEl.style.border = 'none';
-        tdEl.setAttribute('id','start');
-      }// end of text content else if 2
-       else if (maze[i].charAt(x) == "!") {
-        tdEl.setAttribute('id','win');
+        tdEl.setAttribute('id', 'start');
+      } // end of text content else if 2
+      else if (maze[i].charAt(x) == "!") {
+        tdEl.setAttribute('id', 'win');
         tdEl.style.backgroundColor = 'yellow';
         let win = document.getElementById('win');
 
         tdEl.style.color = 'yellow';
         tdEl.style.border = 'none';
-      }//end of text content else if 3
+      } //end of text content else if 3
 
 
     }
@@ -158,82 +178,63 @@ const drawMaze = (maze) => {
 
 
 
-};//end of drawMaze
+}; //end of drawMaze
 
 //Calling the function drawMaze print the maze and table on the page
-drawMaze(maze1);
+drawMaze(maze);
+
 
 let mover = document.getElementById('player');
-window.addEventListener('keydown',event => {
-//the mover moves on left and top axis then parseInt gives a interger
-//which I add 5 and px too
-if (event.key == 'a') {
-  mover.style.left = parseInt(mover.style.left) - 7 + 'px';
+window.addEventListener('keydown', event => {
+  //the mover moves on left and top axis then parseInt gives a interger
+  //which I add 5 and px too
+  if (event.key == 'a') {
+    mover.style.left = parseInt(mover.style.left) - 10 + 'px';
 
-}//end of mover if
+  } //end of mover if
+  else if (event.key == 's') {
 
-else if (event.key == 's') {
+    mover.style.top = parseInt(mover.style.top) + 10 + 'px';
 
-  mover.style.top = parseInt(mover.style.top) + 7 + 'px';
+  } //end of mover else if 2
+  else if (event.key == 'd') {
+    mover.style.left = parseInt(mover.style.left) + 10 + 'px';
+  } //end of mover else if 2
+  else if (event.key == 'w') {
+    mover.style.top = parseInt(mover.style.top) - 10 + 'px';
 
-}//end of mover else if 2
+  } //end of mover else if 3
+  let pos = mover.getBoundingClientRect();
+  let table = document.querySelector('table');
+  let win = document.querySelector('#win');
+  let wins = win.getBoundingClientRect();
+  console.log(wins);
+  let walls = document.querySelectorAll('.wall');
 
-else if (event.key == 'd') {
-  mover.style.left = parseInt(mover.style.left) + 7 + 'px';
-}//end of mover else if 2
+  for (let wall of walls) {
+    let wowWalls = wall.getBoundingClientRect();
+    //if statement which checks for wall and player collision
+    if (pos.x < wowWalls.x + wowWalls.width && pos.x + pos.width > wowWalls.x && pos.y < wowWalls.y + wowWalls.height && pos.y + pos.height > wowWalls.y) {
+      loose();
+    } else if (pos.x < wins.x + wins.width && pos.x + pos.width > wins.x && pos.y < wins.y + wins.height && pos.y + pos.height > wins.y) {
+       clearTable(table);
+       let win = () => {
+         return true;
+       };
 
-else if (event.key == 'w') {
-  mover.style.top = parseInt(mover.style.top) - 7 + 'px';
+    } else {
+      //nothing to see here
+    }
 
-}//end of mover else if 3
-let pos = mover.getBoundingClientRect();
-console.log(pos);
-console.log(pos);
+  }
 
-let walls = document.querySelectorAll('.wall');
 
-for (let wall of walls) {
+}); //end of eventListener
 
-let wowWalls = wall.getBoundingClientRect();
- if (pos.top > wowWalls.bottom && pos.right < wowWalls.left && pos.bottom < wowWalls.top && pos.left > wowWalls.right ) {
-   console.log('wall');
- }
+let nextlevel = () => {
 
 }
 
-
-
-});//end of eventListener
-
-
-/*
-let endGameWin = () => {
-   removeEventListener( 'keydown', event);
-  let winState = document.createElement('p');
-  let divTable = document.getElementById('cover');
-  divTable.appendChild(winState);
-  winState.textContent = 'Yay you won!';
-  winState.style.width = '200px';
-  winState.style.height = '20px';
-  winState.style.border = '1px solid black';
-  divTable.style.display = 'flex';
-  divTable.style.flexDirection = 'column';
-  console.log('win');
-
-
-};
-
-let endGameLoose = () => {
-  removeEventListener( 'keydown', event);
-
-};
-
-*/
-
-    //if # is in the position of the div
-    //then cancel animation and make a p element which is created to the window
-    //that states you loose
-    //also disable the keys
 
 
 /*
