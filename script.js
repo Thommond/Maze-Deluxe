@@ -1,6 +1,30 @@
+//if button clicked it loads this function for info on keys
+let info = () => {
+ let body = document.querySelector('body');
+ let b1 = document.querySelector('#one')
+ b1.textContent = 'WASD to move mover and press me to play';
+ body.style.flexDirection = 'column';
+ body.style.justifyContent = 'center';
+ body.style.alignItems = 'center';
+
+};//end of info function
+
+//if button clicked it loads the game
+let loadPage = () => {
+  let getRideOfMenu = () => {
+    let b1 = document.querySelector('#one');
+    let b2 = document.querySelector('#two');
+  let body = document.querySelector('body');
+ b1.style.display = 'none';
+ b2.style.display = 'none';
+ body.style.flexDirection = 'row';
+ body.style.justifyContent = 'flex-start';
+ body.style.alignItems = 'flex-start';
+
+
+};//end of getRideOfMenu function
+getRideOfMenu();
 //below are maze levels 1 through 10
-
-
 let maze1 = [
   `##########`,
   `_.......##`,
@@ -448,3 +472,4 @@ window.addEventListener('keydown', event => {
 
 
 }); //end of eventListener
+};//end of on click function for story 5

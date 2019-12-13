@@ -4,6 +4,9 @@ body {
     color: #ffffff00;
     background: purple;
     display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     /*background-image: url(src/maze-background.jpeg);*/
 }
 
@@ -46,4 +49,13 @@ table {
     height: 15px;
     display: block;
     background-color: black;
+}
+
+button {
+  background-color: orange;
+  color: black;
+  font-size: 25pt;
+  border: 2px solid black;
+  width:300px;
+  height: 150px;
 }
