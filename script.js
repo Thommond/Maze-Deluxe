@@ -1,28 +1,3 @@
-let info
-let body
-let b1
-let b2
-let loadPage
-let getRideOfMenu
-let currentLevel
-let lose
-let table
-let looseP
-let body
-let para
-let h1
-let button
-let tdEl
-let rowEl
-let divTable
-let tableEl
-let mover
-let pos
-let table
-let win
-let wins
-let walls
-
 //if button clicked it loads this function for info on keys
 let info = () => {
 let body = document.querySelector('body');
