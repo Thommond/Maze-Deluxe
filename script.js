@@ -241,17 +241,18 @@ let maze11 = [
 
 //global variables
 let currentLevel = maze1;
-let levels = [maze1, maze2, maze3, ];
+let levels = [maze6];
 let body = document.querySelector('body');
 let divTable = document.getElementById('cover');
 let tableEl = document.querySelector('table');
-  //if button clicked it loads this function for info on keys
+//if button clicked it loads this function for info on keys
 let info = () => {
   let b1 = document.querySelector('#one')
   b1.textContent = 'WASD to move mover and press me to play';
 }; //end of info function
-//if button clicked it loads the game
+//if button clicked it loads the game for easy access
 let loadPage = () => {
+  //the function below removes the two menu buttons from the page by making it invisible to the user
   let getRideOfMenu = () => {
     let b1 = document.querySelector('#one');
     let b2 = document.querySelector('#two');
@@ -287,6 +288,7 @@ let loadPage = () => {
   }; //end of lose function
 
 
+  //clear table function for clearing the levels after every level is complete
   const clearTable = (tableEl) => {
     while (tableEl.firstChild) {
       tableEl.removeChild(tableEl.firstChild);
@@ -317,10 +319,9 @@ let loadPage = () => {
 
         tdEl.innerHTML = maze[i].charAt(x);
 
-        //conditionals below if the char is a specific character
-        //then run the code below
 
-        switch (maze[i].charAt(x)) {
+        switch (maze[i].charAt(x)) { //each case is for a specific char which determines how the player interacts
+          //with the td in the game
           case '#':
             tdEl.setAttribute('class', 'wall');
             break;
@@ -351,8 +352,8 @@ let loadPage = () => {
     switch (event.key) {
       case 'w':
         mover.style.top = parseInt(mover.style.top) - 10 + 'px';
-        //the mover moves on left and top axis then parseInt gives a interger
-        //which I add 5 and px too
+        //the mover moves on left and top axis then parseInt gives a integer
+        //which adds 5 and px.
         break;
       case 'a':
         mover.style.left = parseInt(mover.style.left) - 10 + 'px';
@@ -374,25 +375,26 @@ let loadPage = () => {
     let walls = document.querySelectorAll('.wall');
 
     for (let wall of walls) {
-      let wowWalls = wall.getBoundingClientRect();
-      // checks for wall and player collision
-      if (pos.x < wowWalls.x + wowWalls.width && pos.x + pos.width > wowWalls.x && pos.y < wowWalls.y + wowWalls.height && pos.y + pos.height > wowWalls.y) {
-        lose();
-      } else if (pos.x < wins.x + wins.width && pos.x + pos.width > wins.x && pos.y < wins.y + wins.height && pos.y + pos.height > wins.y) {
-        for (let i = 0; i < levels.length; i++) {
-          currentLevel = levels[i]
-          clearTable(tableEl);
-          mover.style.left = '10px';
-          mover.style.top = '50px';
-          drawMaze(currentLevel);
+          let wowWalls = wall.getBoundingClientRect();
+          // checks for wall and player collision
+          if (pos.x < wowWalls.x + wowWalls.width && pos.x + pos.width > wowWalls.x && pos.y < wowWalls.y + wowWalls.height && pos.y + pos.height > wowWalls.y) {
+            lose();
+          } else if (pos.x < wins.x + wins.width && pos.x + pos.width > wins.x && pos.y < wins.y + wins.height && pos.y + pos.height > wins.y) {
+            for (let i = 0; i < levels.length; i++) {
+              currentLevel = levels[i]
+              clearTable(tableEl);
+              mover.style.left = '10px';
+              mover.style.top = '50px';
+              drawMaze(currentLevel);
 
+
+
+            }
+          }
+          if (pos.x == 0) {
+            lose();
+          }
         }
-      }
-      if (pos.x == 0) {
-        lose();
-      }
-    }
-
   }); //end of eventListener
 
-}; //end of on click function for story 5
+}; //end of on click function
