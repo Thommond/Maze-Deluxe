@@ -1,6 +1,6 @@
 # Maze-Deluxe
 Maze deluxe was my semester project in December 2019. This game
-is a JavaScript multi level maze adventure game.
+is a JavaScript multi level Maze adventure game.
 
 ## Usage
 

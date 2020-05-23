@@ -17,16 +17,26 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
+h1{
   font-weight: bold;
   color: black;
   height: 100px;
   font-size: 40pt;
 }
+
+h2 {
+  font-weight: bold;
+  color: black;
+  height: 100px;
+  font-size: 16pt;
+  position: relative;
+  left: 1100px;
+  display: none;
+}
+
 /*table styles*/
 table {
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   text-align: center;
   width: auto;
   height: auto;
@@ -49,7 +59,7 @@ div#cover {
   z-index: 10000;
 }
 
-button {
+button, a {
   background-color: orange;
   color: black;
   font-size: 25pt;
@@ -57,6 +67,25 @@ button {
   width: 300px;
   height: 150px;
 }
+
+#backButton {
+  display: none;
+  background-color: orange;
+  color: black;
+  font-size: 15pt;
+  border: 1px solid black;
+  width: 250px;
+  height: 50px;
+  left: 1600px;
+}
+
+a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*section which is for end game scenario*/
 section {
   width: 600px;
@@ -89,14 +118,15 @@ td {
   padding: 0px;
 }
 
+/* For each type of td */
 #win {
   background-color: yellow;
   color:yellow;
 }
 
 .wall {
-  color:red;
-  background-color: red;
+  color:darkgreen;
+  background-color: darkgreen;
 }
 
 .freespace {
