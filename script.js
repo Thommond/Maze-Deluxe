@@ -124,7 +124,7 @@ let maze7 = [
 
 let maze8 = [
 
-  `########################################`, //index 1
+  `########################################`,
   `_......................#...............#`,
   `#..#################...#...#########...#`,
   `#..#.......#.......#...#...#.......#...#`,
@@ -148,7 +148,7 @@ let maze8 = [
 ];
 
 let maze9 = [
-  `#########################################`, //index 2
+  `#########################################`,
   `_.......................#...............#`,
   `#####################...#...#############`,
   `#...#.......#.......#...#...#...........#`,
@@ -172,7 +172,7 @@ let maze9 = [
 ];
 
 let maze10 = [
-  `#############################################################`, //index 3
+  `#############################################################`,
   `_.......######.............##............#..................#`,
   `######..##......#..######......#####..#..#########..######..#`,
   `#....#..#########..##..######..#..##..#..................#..#`,
@@ -206,7 +206,7 @@ let maze10 = [
 ];
 
 let maze11 = [
-  `#############################################################`, //index 4
+  `#############################################################`,
   `_.........#.....................#.....................#######`,
   `########..##...#######..######..#..#################........#`,
   `##.....#..###..##............#..##########..##############..#`,
@@ -241,7 +241,7 @@ let maze11 = [
 
 //global variables
 let currentLevel = maze1;
-let levels = [maze6];
+let levels = [maze2];
 let body = document.querySelector('body');
 let divTable = document.getElementById('cover');
 let tableEl = document.querySelector('table');
@@ -273,7 +273,7 @@ let loadPage = () => {
     let button = document.createElement('button');
     clearTable(tableEl);
     //styles for end condition
-    mover.style.display = 'none';
+    mover.style.display = 'none';// TODO: Need to make mover not exist
     h1.textContent = 'GAME OVER';
     para.textContent = 'Press the Button below to restart.';
     button.textContent = 'Restart??';
@@ -287,8 +287,29 @@ let loadPage = () => {
     body.style.justifyContent = 'center';
   }; //end of lose function
 
+  let ending = () => {
 
-  //clear table function for clearing the levels after every level is complete
+    let endingP = document.createElement('section')
+    let para = document.createElement('p');
+    let h1 = document.createElement('h1');
+    let button = document.createElement('button');
+    clearTable(tableEl);
+    mover.style.display = 'none';// TODO: Need to make mover not exist
+    h1.textContent = 'Congrats you have won! I hope you enjoyed the journey.';
+    para.textContent = 'Press the Button below to play again!.';
+    button.textContent = 'Play Agian?';
+    button.setAttribute('onclick', 'window.location.reload();');
+    button.setAttribute('type', 'button');
+    //adding end para to body and other child elements
+    body.appendChild(endingP);
+    looseP.appendChild(h1);
+    looseP.appendChild(para);
+    looseP.appendChild(button);
+    body.style.justifyContent = 'center';
+
+
+  }
+  //clear table function for clearing the levels after every level is completed
   const clearTable = (tableEl) => {
     while (tableEl.firstChild) {
       tableEl.removeChild(tableEl.firstChild);
@@ -377,23 +398,74 @@ let loadPage = () => {
     for (let wall of walls) {
           let wowWalls = wall.getBoundingClientRect();
           // checks for wall and player collision
-          if (pos.x < wowWalls.x + wowWalls.width && pos.x + pos.width > wowWalls.x && pos.y < wowWalls.y + wowWalls.height && pos.y + pos.height > wowWalls.y) {
+          let losingPos = pos.x < wowWalls.x + wowWalls.width && pos.x + pos.width > wowWalls.x && pos.y < wowWalls.y + wowWalls.height && pos.y + pos.height > wowWalls.y
+
+          if (losingPos) {
             lose();
-          } else if (pos.x < wins.x + wins.width && pos.x + pos.width > wins.x && pos.y < wins.y + wins.height && pos.y + pos.height > wins.y) {
-            for (let i = 0; i < levels.length; i++) {
+          }
+          if (pos.x == 0) {
+            lose();
+          }
+        }
+         // the wining cordinate of each level
+         let winingPos = pos.x < wins.x + wins.width && pos.x + pos.width > wins.x && pos.y < wins.y + wins.height && pos.y + pos.height > wins.y
+
+         if (winingPos) {
+
+         // for each level the switch statement will update the levels array
+         switch (currentLevel) {
+           case maze2:
+              levels.push(maze3);
+             break;
+
+            case maze3:
+              levels.push(maze4);
+              break;
+
+            case maze4:
+              levels.push(maze5);
+              break;
+
+            case maze5:
+              levels.push(maze6);
+              break;
+
+            case maze6:
+              levels.push(maze7);
+              break;
+
+            case maze7:
+              levels.push(maze8);
+              break;
+
+            case maze8:
+              levels.push(maze9);
+              break;
+
+            case maze9:
+              levels.push(maze10);
+
+            case maze10:
+              levels.push(maze11)
+
+            case maze11:
+
+
+
+         }
+         // for the length of the levels array
+         for (let i = 0; i < levels.length; i++) {
+
+              // print each level via the DOM
               currentLevel = levels[i]
               clearTable(tableEl);
               mover.style.left = '10px';
               mover.style.top = '50px';
               drawMaze(currentLevel);
-
-
-
-            }
           }
-          if (pos.x == 0) {
-            lose();
-          }
+
+
+
         }
   }); //end of eventListener
 
