@@ -241,7 +241,7 @@ let maze11 = [
 
 //global variables
 let currentLevel = maze1;
-let levels = [maze2];
+let levels = [];
 let body = document.querySelector('body');
 let divTable = document.getElementById('cover');
 let tableEl = document.querySelector('table');
@@ -282,13 +282,11 @@ let loadPage = () => {
     let para = document.createElement('p');
     let h1 = document.createElement('h1');
     let button = document.createElement('button');
-    let backButton = document.querySelector('#backButton');
-    let h2 = document.querySelector('#mazeName');
+    let cover = document.querySelector('#coverTwo');
     clearTable(tableEl);
     //styles for end condition
     mover.style.display = 'none';
-    h2.style.display = 'none';
-    backButton.style.display = 'none';
+    cover.style.display = 'none';
     h1.textContent = 'GAME OVER';
     para.textContent = 'Press the Button below to restart.';
     button.textContent = 'Restart??';
@@ -303,17 +301,17 @@ let loadPage = () => {
   }; //end of lose function
 
   let ending = () => {
-
-    let endingS = document.createElement('section')
+    // Making so a message appears to users who have completed
+    //the eleven Mazes
+    let endingS = document.createElement('section');
     let para = document.createElement('p');
     let h1 = document.createElement('h1');
     let button = document.createElement('button');
-    let backButton = document.querySelector('#backButton');
-    let h2 = document.querySelector('#mazeName');
+    let cover = document.querySelector('#coverTwo');
+    // TODO: Make a form pop up so winners can add their name to a list of winners
     clearTable(tableEl);
-    h2.style.display = 'none';
-    backButton.style.display = 'none';
-    mover.style.display = 'none';// TODO: Need to make mover not exist
+    cover.style.display = 'none';
+    mover.style.display = 'none';
     h1.textContent = 'Congrats you have won! I hope you enjoyed the journey.';
     para.textContent = 'Press the Button below to play again!.';
     button.textContent = 'Play Again?';
@@ -322,7 +320,7 @@ let loadPage = () => {
     //adding end para to body and other child elements
     body.appendChild(endingS);
     endingS.appendChild(h1);
-    endingS.appendChild(parfa);
+    endingS.appendChild(para);
     endingS.appendChild(button);
     body.style.justifyContent = 'center';
 
@@ -439,45 +437,58 @@ let loadPage = () => {
 
          // for each level the switch statement will update the levels array
          switch (currentLevel) {
+           case maze1:
+              mazeName.textContent = `Current maze is maze 2`;
+              levels.push(maze2)
+             break;
+
            case maze2:
+              mazeName.textContent = `Current maze is maze 3`;
               levels.push(maze3);
              break;
 
             case maze3:
+              mazeName.textcontent = `Current maze is maze 4`
               levels.push(maze4);
               break;
 
             case maze4:
+              mazeName.textcontent = `Current maze is maze 5`
               levels.push(maze5);
               break;
 
             case maze5:
+              mazeName.textcontent = `Current maze is maze 6`
               levels.push(maze6);
               break;
 
             case maze6:
+              mazeName.textcontent = `Current maze is maze 7`
               levels.push(maze7);
               break;
 
             case maze7:
+              mazeName.textcontent = `Current maze is maze 8`
               levels.push(maze8);
               break;
 
             case maze8:
+              mazeName.textcontent = `Current maze is maze 9`
               levels.push(maze9);
               break;
 
             case maze9:
+              mazeName.textcontent = `Current maze is maze 10`
               levels.push(maze10);
               break;
 
             case maze10:
+              mazeName.textcontent = `Current maze is maze 11`
               levels.push(maze11);
               break;
 
             case maze11:
               ending();
-              console.log('hello?')
             break;
 
          }
@@ -491,14 +502,12 @@ let loadPage = () => {
               mover.style.left = '10px';
               mover.style.top = '50px';
               drawMaze(currentLevel);
-              // Changing the level name
-              mazeName.textContent = `Current maze is ${currentLevel}`;
-
 
           }
 
 
         }
+
   }); //end of eventListener
 
 }; //end of on click function
