@@ -282,9 +282,13 @@ let loadPage = () => {
     let para = document.createElement('p');
     let h1 = document.createElement('h1');
     let button = document.createElement('button');
+    let backButton = document.querySelector('#backButton');
+    let h2 = document.querySelector('#mazeName');
     clearTable(tableEl);
     //styles for end condition
     mover.style.display = 'none';
+    h2.style.display = 'none';
+    backButton.style.display = 'none';
     h1.textContent = 'GAME OVER';
     para.textContent = 'Press the Button below to restart.';
     button.textContent = 'Restart??';
@@ -300,22 +304,26 @@ let loadPage = () => {
 
   let ending = () => {
 
-    let endingP = document.createElement('section')
+    let endingS = document.createElement('section')
     let para = document.createElement('p');
     let h1 = document.createElement('h1');
     let button = document.createElement('button');
+    let backButton = document.querySelector('#backButton');
+    let h2 = document.querySelector('#mazeName');
     clearTable(tableEl);
+    h2.style.display = 'none';
+    backButton.style.display = 'none';
     mover.style.display = 'none';// TODO: Need to make mover not exist
     h1.textContent = 'Congrats you have won! I hope you enjoyed the journey.';
     para.textContent = 'Press the Button below to play again!.';
-    button.textContent = 'Play Agian?';
+    button.textContent = 'Play Again?';
     button.setAttribute('onclick', 'window.location.reload();');
     button.setAttribute('type', 'button');
     //adding end para to body and other child elements
-    body.appendChild(endingP);
-    endingP.appendChild(h1);
-    endingP.appendChild(para);
-    endingP.appendChild(button);
+    body.appendChild(endingS);
+    endingS.appendChild(h1);
+    endingS.appendChild(parfa);
+    endingS.appendChild(button);
     body.style.justifyContent = 'center';
 
   }
@@ -387,20 +395,21 @@ let loadPage = () => {
   window.addEventListener('keydown', event => {
     //mover based on which key is press then the action will occur
     switch (event.key) {
+      //the mover moves on left and top axis then parseInt gives a integer
+      //which adds 10 and px.
       case 'w':
         mover.style.top = parseInt(mover.style.top) - 10 + 'px';
-        //the mover moves on left and top axis then parseInt gives a integer
-        //which adds 10 and px.
         break;
+
       case 'a':
         mover.style.left = parseInt(mover.style.left) - 10 + 'px';
         break;
+
       case 's':
         mover.style.top = parseInt(mover.style.top) + 10 + 'px';
-
         break;
-      case 'd':
 
+      case 'd':
         mover.style.left = parseInt(mover.style.left) + 10 + 'px';
         break;
     }
@@ -463,14 +472,16 @@ let loadPage = () => {
               break;
 
             case maze10:
-              levels.push(maze11)
+              levels.push(maze11);
               break;
 
             case maze11:
-            ending()
+              ending();
+              console.log('hello?')
             break;
 
          }
+
          // for the length of the levels array
          for (let i = 0; i < levels.length; i++) {
 
@@ -482,13 +493,6 @@ let loadPage = () => {
               drawMaze(currentLevel);
               // Changing the level name
               mazeName.textContent = `Current maze is ${currentLevel}`;
-              let mazeCount = 2;
-              for (let i = 2; i <= currentLevel.length; i++) {
-                mazeCount += 1 
-                let mazeCountName = `Current maze level maze ${mazeCount}`
-                console.log(mazeCountName)
-
-              }
 
 
           }
