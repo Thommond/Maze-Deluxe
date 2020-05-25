@@ -36,6 +36,16 @@ h2 {
 display: none;
 }
 
+#ending {
+  width: 800px;
+  height: 800px;
+  background-color: green;
+}
+
+#ending h1 {
+  padding: 10px;
+}
+
 #coverTwo {
   background-color: #fbfbfb;
   border: 2px dashed black;
@@ -43,8 +53,8 @@ display: none;
   display: flex;
   justify-content: center;
   position: relative;
-  left: 1600px;
   flex-direction: column;
+  top: 800px;
 }
 
 /*table styles*/
@@ -61,6 +71,8 @@ table {
 div#cover {
   position: none;
 }
+
+
 /*for the moving object*/
 #player {
   position: absolute;
@@ -100,8 +112,7 @@ a {
 
 /*section which is for end game scenario*/
 section {
-  width: 600px;
-  height: 600px;
+  margin: auto;
   border: 1px solid black;
   border-radius: 10px;
   background-color: grey;
@@ -113,8 +124,6 @@ section {
 }
 
 #info {
-  width: 800px;
-  height: 800px;
   margin: 5px;
   padding: 5px;
 }
@@ -156,4 +165,46 @@ td {
 #start {
   color:green;
   background-color: green;
+}
+
+@media screen and (min-width: 760px) {
+
+section {
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: grey;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#coverTwo {
+  top: 0px;
+  left: 700px;
+}
+
+#info {
+  width: 800px;
+  height: 800px;
+}
+
+
+
+}
+
+@media screen and (min-width: 1200px) {
+#coverTwo {
+  top: 0px;
+  left: 1100px;
+}
+}
+
+@media screen and (min-width: 1500px) {
+#coverTwo {
+  left: 1400px;
+}
 }

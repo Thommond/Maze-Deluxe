@@ -315,6 +315,7 @@ let loadPage = () => {
     h1.textContent = 'Congrats you have won! I hope you enjoyed the journey.';
     para.textContent = 'Press the Button below to play again!.';
     button.textContent = 'Play Again?';
+    endingS.setAttribute('id', 'ending');
     button.setAttribute('onclick', 'window.location.reload();');
     button.setAttribute('type', 'button');
     //adding end para to body and other child elements
@@ -323,6 +324,7 @@ let loadPage = () => {
     endingS.appendChild(para);
     endingS.appendChild(button);
     body.style.justifyContent = 'center';
+    body.style.backgroundImage = "url('src/winning-Image.jpeg')";
 
   }
 
@@ -410,6 +412,50 @@ let loadPage = () => {
       case 'd':
         mover.style.left = parseInt(mover.style.left) + 10 + 'px';
         break;
+
+      case '`':// To test ending condition will remove before deploy
+        currentLevel = maze11;
+        break;
+
+      case '2':
+        currentLevel = maze1;// Cheat codes to change to prefered level
+        break;
+
+      case '3':
+        currentLevel = maze2;
+        break;
+
+      case '4':
+        currentLevel = maze3;
+        break;
+
+      case '5':
+        currentLevel = maze4;
+        break;
+
+      case '6':
+        currentLevel = maze5;
+        break;
+
+      case '7':
+        currentLevel = maze6;
+        break;
+
+      case '8' :
+        currentLevel = maze7;
+        break;
+
+      case '9':
+        currentLevel = maze8;
+        break;
+
+      case '-':
+        currentLevel = maze9;
+        break;
+
+      case '=':
+        currentLevel = maze10;
+        break;
     }
 
     //defining variables to use for win and lose conditions
@@ -438,6 +484,7 @@ let loadPage = () => {
          // for each level the switch statement will update the levels array
          switch (currentLevel) {
            case maze1:
+              // Added text content updates so users can know what level they are completing
               mazeName.textContent = `Current maze is maze 2`;
               levels.push(maze2)
              break;
@@ -448,42 +495,42 @@ let loadPage = () => {
              break;
 
             case maze3:
-              mazeName.textcontent = `Current maze is maze 4`
+              mazeName.textContent = `Current maze is maze 4`;
               levels.push(maze4);
               break;
 
             case maze4:
-              mazeName.textcontent = `Current maze is maze 5`
+              mazeName.textContent = `Current maze is maze 5`;
               levels.push(maze5);
               break;
 
             case maze5:
-              mazeName.textcontent = `Current maze is maze 6`
+              mazeName.textContent = `Current maze is maze 6`;
               levels.push(maze6);
               break;
 
             case maze6:
-              mazeName.textcontent = `Current maze is maze 7`
+              mazeName.textContent = `Current maze is maze 7`;
               levels.push(maze7);
               break;
 
             case maze7:
-              mazeName.textcontent = `Current maze is maze 8`
+              mazeName.textContent = `Current maze is maze 8`;
               levels.push(maze8);
               break;
 
             case maze8:
-              mazeName.textcontent = `Current maze is maze 9`
+              mazeName.textContent = `Current maze is maze 9`;
               levels.push(maze9);
               break;
 
             case maze9:
-              mazeName.textcontent = `Current maze is maze 10`
+              mazeName.textContent = `Current maze is maze 10`;
               levels.push(maze10);
               break;
 
             case maze10:
-              mazeName.textcontent = `Current maze is maze 11`
+              mazeName.textContent = `Current maze is maze 11`;
               levels.push(maze11);
               break;
 
@@ -492,6 +539,8 @@ let loadPage = () => {
             break;
 
          }
+
+
 
          // for the length of the levels array
          for (let i = 0; i < levels.length; i++) {
