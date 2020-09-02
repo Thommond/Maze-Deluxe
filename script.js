@@ -268,9 +268,6 @@ let loadPage = () => {
     backButton.setAttribute('type', 'button');
     backButton.style.position = 'relative';
     backButton.style.top = '1px';
-    body.style.flexDirection = 'row';
-    body.style.justifyContent = 'flex-start';
-    body.style.alignItems = 'flex-start';
 
   }; //end of getRideOfMenu function
   updatePageMenu();
@@ -297,7 +294,6 @@ let loadPage = () => {
     looseP.appendChild(h1);
     looseP.appendChild(para);
     looseP.appendChild(button);
-    body.style.justifyContent = 'center';
   }; //end of lose function
 
   let ending = () => {
@@ -323,7 +319,6 @@ let loadPage = () => {
     endingS.appendChild(h1);
     endingS.appendChild(para);
     endingS.appendChild(button);
-    body.style.justifyContent = 'center';
     body.style.backgroundImage = "url('src/winning-Image.jpeg')";
 
   }
@@ -343,12 +338,12 @@ let loadPage = () => {
     //creating a function to draw maze
     //defining basic layout
     clearTable(tableEl);
-    divTable.appendChild(mover);
+    tableEl.appendChild(mover);
 
 
     //equipting the mover
-    mover.style.left = '10px';
-    mover.style.top = '50px';
+    mover.style.left = '0px';
+    mover.style.top = '42px';
     mover.setAttribute('id', 'player');
     mover.textContent = '@';
 
