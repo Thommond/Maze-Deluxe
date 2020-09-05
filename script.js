@@ -254,23 +254,24 @@ let info = () => {
 let loadPage = () => {
   //the function below removes the two menu buttons from the page by making it invisible to the user
   let updatePageMenu = () => {
+
     let b1 = document.querySelector('#startGame');
     let b2 = document.querySelector('#controls');
     let b3 = document.querySelector('#winners');
     let h1 = document.querySelector('h1');
+    let b4 = document.querySelector('#backButton')
     let backButton = document.querySelector('#backButton');
     b1.style.display = 'none';
     b2.style.display = 'none';
     b3.style.display = 'none';
     h1.style.display = 'none';
+    b4.style.display = 'block';
+
     backButton.style.display = 'flex';
     backButton.setAttribute('onclick', 'window.location.reload();');
     backButton.setAttribute('type', 'button');
     backButton.style.position = 'relative';
     backButton.style.top = '1px';
-    body.style.flexDirection = 'row';
-    body.style.justifyContent = 'flex-start';
-    body.style.alignItems = 'flex-start';
 
   }; //end of getRideOfMenu function
   updatePageMenu();
@@ -297,7 +298,6 @@ let loadPage = () => {
     looseP.appendChild(h1);
     looseP.appendChild(para);
     looseP.appendChild(button);
-    body.style.justifyContent = 'center';
   }; //end of lose function
 
   let ending = () => {
@@ -323,7 +323,6 @@ let loadPage = () => {
     endingS.appendChild(h1);
     endingS.appendChild(para);
     endingS.appendChild(button);
-    body.style.justifyContent = 'center';
     body.style.backgroundImage = "url('src/winning-Image.jpeg')";
 
   }
@@ -343,12 +342,12 @@ let loadPage = () => {
     //creating a function to draw maze
     //defining basic layout
     clearTable(tableEl);
-    divTable.appendChild(mover);
+    tableEl.appendChild(mover);
 
 
     //equipting the mover
-    mover.style.left = '10px';
-    mover.style.top = '50px';
+    mover.style.left = '0px';
+    mover.style.top = '42px';
     mover.setAttribute('id', 'player');
     mover.textContent = '@';
 

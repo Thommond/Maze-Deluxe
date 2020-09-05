@@ -1,3 +1,8 @@
+
+/**
+General
+*/
+
 html {
   box-sizing: border-box;
 }
@@ -26,10 +31,17 @@ h1{
 
 h2 {
   font-weight: bold;
-  color: rgb(216, 19, 19);
-  font-size: 16pt;
+  color: white;
+  font-size: 24px;
+}
+
+/**
+Layout
+*/
+
+.gameh2 {
   position: absolute;
-  margin: 0 1rem;
+  margin: 0.5rem 1rem;
 }
 
 #mazeName {
@@ -54,23 +66,10 @@ display: none;
   flex-direction: row;
 }
 
-/*table styles*/
-table {
-  margin: auto;
-  text-align: center;
-  width: auto;
-  height: auto;
-  border-spacing: 0;
-  border-collapse: initial;
-  position: absolute;
-}
+/**
+For the moving object
+*/
 
-div#cover {
-  position: none;
-}
-
-
-/*for the moving object*/
 #player {
   position: absolute;
   width: 1.25rem;
@@ -85,32 +84,41 @@ button, a {
   background-color: rgb(235, 190, 107);
   color: rgb(0, 0, 0);
   margin: 3rem;
+  font-size: 15pt;
   width: 23rem;
   height: 8rem;
   border: 1rem outset;
 }
 
 #backButton {
+  display: none;
   position: absolute;
-  background-color: rgb(235, 190, 107);
+  background-color: rgb(243, 167, 27);
   color: rgb(0, 0, 0);
-  font-size: 13pt;
+  font-size: 16pt;
   border: 1px solid rgb(0, 0, 0);
   margin: 0;
-  height: 1.5rem;
   top: 0;
   right: 25rem;
   width: auto;
+  padding: 10px;
+  height: auto;
+  text-shadow: 1px 1px 3px black;
 }
 
-a {
+a{
+  font-size: 15pt;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/*section which is for end game scenario*/
+/**
+Section which is for
+end game scenario
+*/
+
 section {
   margin: auto;
   border: 0.1rem inset rgb(0, 0, 0);
@@ -124,20 +132,54 @@ section {
 }
 
 #info {
+  height: auto;
+  width: auto;
   margin: 0.3125rem;
   padding: 0.3125rem;
+  max-width: 850px;
 }
 
 p {
-  color: rgb(255, 0, 0);
-  font-size: 25pt;
+  color: black;
+  font-size: 15pt;
   height: 3.125rem;
+}
+
+/**
+Advisory on  startGame
+button
+*/
+#play {
+  color: red;
+  font-size: 10pt;
+}
+
+/**
+General table styles
+*/
+
+.maze-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+table {
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+  width: auto;
+  height: auto;
+  border-spacing: 0;
+  border-collapse: initial;
+  position: relative;
 }
 
 tr {
   border: none;
 }
-/*table element styles*/
+
 td {
   width: 1.5625rem;
   height: 2.1875rem;
@@ -146,14 +188,17 @@ td {
   padding: 0;
 }
 
-/* For each type of td */
+/**
+For each type of td
+*/
+
 #win {
   background-color: rgb(231, 200, 22);
   color:rgb(231, 200, 22);
 }
 
 .wall {
-  color:rgb(14, 202, 14);
+  color:rgb(0, 255, 0);
   background-color: rgb(0, 255, 0);
 }
 
@@ -167,40 +212,24 @@ td {
   background-color: rgb(52, 129, 52);
 }
 
-@media screen and (min-width: 47.5rem) {
-section {
-    width: 37.5rem;
-    height: 37.5rem;
-    border: 0.1 groove rgb(0, 0, 0);
-    border-radius: 0.625rem;
-    background-color: rgb(126, 122, 122);
-    z-index: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-}
-
 #coverTwo {
   top: 0;
   left: 50rem;
 }
 
-#info {
-  width: 50rem;
-  height: 50rem;
-}
+/**
+Making more responsive
+*/
 
 @media screen and (min-width: 75rem) {
-#coverTwo {
-  top: 0;
-  left: 16.25rem;
-}
+  #coverTwo {
+    top: 0;
+    left: 16.25rem;
+  }
 }
 
 @media screen and (min-width: 93.75rem) {
-#coverTwo {
-  left: 87.5rem;
-}
+  #coverTwo {
+    left: 30%;
+  }
 }
