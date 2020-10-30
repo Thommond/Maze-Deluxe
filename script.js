@@ -1,7 +1,7 @@
 //below are maze levels 1 through 10
 let maze1 = [
   `##########`,
-  `_.......##`,
+  `#_.......#`,
   `#..###..##`,
   `#....#..##`,
   `#..###..##`,
@@ -14,7 +14,7 @@ let maze1 = [
 
 let maze2 = [
   `###############`,
-  `_.........#####`,
+  `#_.........####`,
   `#..#..##..#####`,
   `#..#..##......#`,
   `#..#..######..#`,
@@ -31,7 +31,7 @@ let maze2 = [
 ];
 let maze3 = [
   `##############################`,
-  `_.....................########`,
+  `#_.....................#######`,
   `##########..########..########`,
   `##########..#......#.........#`,
   `#...........#..##..########..#`,
@@ -43,7 +43,7 @@ let maze3 = [
 ];
 let maze4 = [
   `##############################`,
-  `_....###..........#........###`,
+  `#_...###...........#.........##`,
   `###..###..###..####..####..###`,
   `###.......###..#.....####..###`,
   `#############..####..#.......#`,
@@ -60,7 +60,7 @@ let maze4 = [
 ];
 let maze5 = [
   `##############################`,
-  `_......####.........#........#`,
+  `#_.....####.........#........#`,
   `#..##..#.....#####..#..####..#`,
   `#......#..#..#......#..#.....#`,
   `#####..####..#####..#..#######`,
@@ -82,7 +82,7 @@ let maze5 = [
 
 let maze6 = [
   `##############################`,
-  `_........##..#######..##..#..#`,
+  `#_.......##...#######..##....#`,
   `#..####..##......#...........#`,
   `#....##..##..##..#..##..###..#`,
   `#....##......##..#..#####....#`,
@@ -104,7 +104,7 @@ let maze6 = [
 
 let maze7 = [
   `##############################`,
-  `_..........####.............##`,
+  `#_..........###..............#`,
   `#..############..#########..##`,
   `#.............#..#.....###..##`,
   `#..#########..#..#..#..###..##`,
@@ -125,7 +125,7 @@ let maze7 = [
 let maze8 = [
 
   `########################################`,
-  `_......................#...............#`,
+  `#_......................#..............#`,
   `#..#################...#...#########...#`,
   `#..#.......#.......#...#...#.......#...#`,
   `#..#...#...#...#...#...#...#...#..##...#`,
@@ -149,7 +149,7 @@ let maze8 = [
 
 let maze9 = [
   `#########################################`,
-  `_.......................#...............#`,
+  `#_......................#...............#`,
   `#####################...#...#############`,
   `#...#.......#.......#...#...#...........#`,
   `#...#...#...#...#...#...#...#...#####...#`,
@@ -173,7 +173,7 @@ let maze9 = [
 
 let maze10 = [
   `#############################################################`,
-  `_.......######.............##............#..................#`,
+  `#_......######.............##............#..................#`,
   `######..##......#..######......#####..#..#########..######..#`,
   `#....#..#########..##..######..#..##..#..................#..#`,
   `###.....##.........##.................#..#################..#`,
@@ -207,7 +207,7 @@ let maze10 = [
 
 let maze11 = [
   `#############################################################`,
-  `_.........#.....................#.....................#######`,
+  `#_.........#....................#......................######`,
   `########..##...#######..######..#..#################........#`,
   `##.....#..###..##............#..##########..##############..#`,
   `##..#.......#..##..#..#####..#..........................##..#`,
@@ -245,25 +245,18 @@ let levels = [];
 let body = document.querySelector('body');
 let divTable = document.getElementById('cover');
 let tableEl = document.querySelector('table');
-//if button clicked it loads this function for info on keys
-let info = () => {
-  let b1 = document.querySelector('#startGame')// TODO: Make a info page of the game
-  b1.textContent = 'WASD to move mover and press me to play';
-}; //end of info function
-//if button clicked it loads the game for easy access
+
 let loadPage = () => {
   //the function below removes the two menu buttons from the page by making it invisible to the user
   let updatePageMenu = () => {
 
     let b1 = document.querySelector('#startGame');
     let b2 = document.querySelector('#controls');
-    let b3 = document.querySelector('#winners');
     let h1 = document.querySelector('h1');
     let b4 = document.querySelector('#backButton')
     let backButton = document.querySelector('#backButton');
     b1.style.display = 'none';
     b2.style.display = 'none';
-    b3.style.display = 'none';
     h1.style.display = 'none';
     b4.style.display = 'block';
 
@@ -327,11 +320,11 @@ let loadPage = () => {
 
   }
 
-  //clear table function for clearing the levels after every level is completed
+
   const clearTable = (tableEl) => {
     while (tableEl.firstChild) {
       tableEl.removeChild(tableEl.firstChild);
-    } //end of clearTable funcition
+    }
   };
 
   let mover = document.createElement('div');
@@ -346,7 +339,7 @@ let loadPage = () => {
 
 
     //equipting the mover
-    mover.style.left = '0px';
+    mover.style.left = '28px';
     mover.style.top = '42px';
     mover.setAttribute('id', 'player');
     mover.textContent = '@';
@@ -387,7 +380,6 @@ let loadPage = () => {
 
   }; //end of drawMaze
 
-  // print the maze and table on the page
   drawMaze(currentLevel);
 
 
@@ -469,9 +461,6 @@ let loadPage = () => {
           let losingPos = pos.x < wowWalls.x + wowWalls.width && pos.x + pos.width > wowWalls.x && pos.y < wowWalls.y + wowWalls.height && pos.y + pos.height > wowWalls.y
 
           if (losingPos) {
-            lose();
-          }
-          if (pos.x == 0) {
             lose();
           }
         }
